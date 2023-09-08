@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .bg-lightgrey {
+            background-color: #dddddd;
+        }
+
+        /* Add darker border to text boxes */
+        .form-control {
+            border: 2px solid #555;
+        }
+
+        /* Style the eye icon */
+        .eye-icon {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 bg-lightgrey p-4 rounded">
+        <h1>Admin Login</h1>
+        <form action="{{ url_for('login') }}" method="post">
+            <div class="form-group">
+                <label for="username"><b>Username:</b></label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password"><b>Password:</b></label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="input-group-append">
+                        <!-- Button to toggle password visibility -->
+                        <span class="input-group-text eye-icon" onclick="togglePasswordVisibility()">
+                            <i class="fa fa-eye" id="eye-icon"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+
+    <!-- Add the Font Awesome library for the eye icon -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            var eyeIcon = document.getElementById("eye-icon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+    </script>
+</body>
+</html>

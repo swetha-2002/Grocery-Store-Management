@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CheckOut</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <h2>Thank you for your order.</h2>
+    <h2>Your order is placed successfully</h2>
+    <li>
+                <div class="checkout"><br>
+                   <b> Total Order Price: ₹{{ total_order_price }}</b>
+                </div>
+            </li>
+    <br><a href="{{ url_for('home_with_nav') }}"><b>Continue shopping</b></a>
+    <br>
+    <a href="{{url_for('landing_page')}}"><b>LogOut</b></a>
+  </body>
+</html>

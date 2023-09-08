@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grocery Store</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+   
+    <style>
+        .products-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Grocery Store</h1>
+    <ul>
+        {% for product in products %}
+        <li>
+            <div class="products-container">
+                <div class="product-details">
+                    <b>{{ product[1] }} </b><br>
+                    Category: {{ product[2] }}<br>
+                    Price: ₹{{ product[3] }} <br>
+                    Quantity: {{ product[4] }}<br>
+                    
+                </div>
+                <div class="actions">
+                    <form action="{{ url_for('update_product', product_id=product[0]) }}" method="GET">
+                        <button class="edit-button" type="submit">Edit</button>
+                    </form>
+                    <form action="{{ url_for('delete_product', product_id=product[0]) }}" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+  <br>
+  <br>
+  <br>
+  
+    <a href="{{ url_for('add_product') }}"><button>Add New Product</button></a>
+  <br><br>
+  <a href = "{{url_for('landing_page')}}"><button>LogOut</button></a>
+</body>
+</html>

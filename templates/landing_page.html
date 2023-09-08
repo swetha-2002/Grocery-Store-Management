@@ -1,0 +1,15 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grocery Store</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Welcome to Our Grocery Store</h1>
+    <ul>
+      <li><a href="{{ url_for('user_home') }}"</a>Admin Access</li>
+      <li><a href="{{ url_for('home_with_nav') }}">User Access</a></li>
+    </ul>
+</body>
+</html>

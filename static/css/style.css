@@ -1,0 +1,135 @@
+/* static/css/style.css */
+
+/* Reset default margin and padding for elements */
+body, h1, h2, h3, form, ul, li, p {
+    margin: 0;
+    padding: 0;
+    text-align:center;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("https://img.freepik.com/premium-photo/fresh-fruits-vegetables-reusable-green-shopping-bag-wood-table-with-supermarket-grocery-store-blurred-defocused-background_293060-4440.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: #000;
+}
+
+h1, h2, h3 {
+    color: #000;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    color: #000;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    align-content: center;
+    font-size:25px;
+    
+}
+
+.product-details {
+    flex: 1;
+}
+
+button {
+    background-color: #005a00;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004200;
+}
+
+.edit-button {
+    margin-right: 10px;
+}
+
+a {
+    color: black;
+    align-content:center;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+            display: flex;
+            justify-content: center; /* Center the items horizontally */
+            align-items: center; /* Center the items vertically */
+        }
+
+        /* Add CSS styles for the form to center align */
+        form {
+            display: flex;
+            align-items: center; /* Center the form vertically */
+        }

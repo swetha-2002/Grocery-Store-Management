@@ -1,0 +1,18 @@
+<html>
+  <title>Grocery Store</title>
+  <!-- Add this in the head section of index.html, add_product.html, and update_product.html -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <body>
+    <h1>
+      Welcome to Grocery Store!
+    </h1>
+    <p>
+      As of now the users are: <ul>
+        {% for name in names%}
+        <li>{{name}}</li>
+        {% endfor %}
+      </ul>
+    </p>
+  </body>
+</html>

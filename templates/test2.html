@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grocery Store</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        li {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            align
+        }
+        .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+    </style>
+  
+</head>
+<body>
+    <h1>Categories</h1>
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            {% for category in categories %}
+            <li>
+              <a href="{{ url_for('view_category', category=category) }}">
+                <img src="{{ url_for('static', filename='images/' + category.lower() + '.jpeg') }}" alt="{{ category }}" width="150" height="150" class="center">
+              <b>{{ category }}</b>
+              </a>
+            </li>
+            {% endfor %}
+            
+            <!-- Add the search form -->
+            <li>
+                <form action="{{ url_for('search') }}" method="post">
+                    <input type="text" name="search_query" placeholder="Search for products">
+                    <input type="submit" value="Search">
+                </form>
+            </li>
+          <li><a href="{{ url_for('view_cart') }}"><b text-align:"center">Cart</b></a></li>
+        </ul>
+    </nav>
+    <a href="{{url_for('landing_page')}}">LogOut</a>
+</body>
+</html>

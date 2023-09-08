@@ -1,0 +1,38 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart - Grocery Store</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Cart</h1>
+    {% if cart_items %}
+        <ul>
+            {% for item in cart_items %}
+            <li>
+                <div class="cart-item">
+                    {{ item['name'] }}<br>
+                    Price: ₹{{ item['price'] }}<br>
+                    Quantity: {{ item['quantity'] }}<br>
+                    Total Price: ₹{{ item['total_price'] }}<br>
+                    <!-- Add the form to remove item from cart -->
+                    <form action="{{ url_for('remove_from_cart', product_id=item['id']) }}" method="post">
+                        <input type="submit" value="Remove from Cart">
+                    </form>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <p><b>Total Order Price: ₹{{ total_order_price }}</b></p>
+<br><br>
+       <a href="{{ url_for('checkout') }}"><button>CheckOut</button></a>
+  
+        <br><br>
+    {% else %}
+        <p><b>Your Cart is empty</b></p> <br><br>
+    {% endif %}
+  <br>
+    <br><a href="{{ url_for('home_with_nav') }}"><b>Wanna have some more? back to shopping</b></a>
+</body>
+</html>

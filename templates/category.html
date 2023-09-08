@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category }} Category - Grocery Store</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+     <script>
+        function showConfirmation(productName, availableQuantity) {
+            var quantity = prompt('Enter the quantity you want to add for ' + productName + ':');
+            if (quantity !== null && quantity !== '') {
+                // Convert availableQuantity from string to integer
+                var maxQuantity = parseInt(availableQuantity);
+
+                // Convert entered quantity from string to integer
+                var enteredQuantity = parseInt(quantity);
+
+                if (Number.isNaN(enteredQuantity)) {
+                    alert('Please enter a valid number for quantity.');
+                } else if (enteredQuantity <= 0) {
+                    alert('Please enter a positive quantity.');
+                } else if (enteredQuantity > maxQuantity) {
+                    alert('Entered quantity exceeds available stock. Maximum available quantity: ' + maxQuantity);
+                } else {
+                    // Send the data to the 'add_to_cart' route using AJAX
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '{{ url_for('add_to_cart') }}', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                            alert(xhr.responseText);
+                        }
+                    };
+                    var formData = 'product_name=' + encodeURIComponent(productName) + '&quantity=' + encodeURIComponent(quantity);
+                    xhr.send(formData);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>{{ category }} Category</h1>
+    {% if products %}
+        <ul>
+            {% for product in products %}
+            <li>
+                <div class="product-details">
+                    {{ product['name'] }}<br>
+                    Price: ₹{{ product['price'] }}<br>
+                    Quantity: {{ product['quantity'] }}
+                    {% if product['quantity'] == 0 %}
+                        <br><strong>Out of Stock</strong>
+                    {% else %}
+                        <br><button type="button" onclick="showConfirmation('{{ product['name'] }}', '{{product['quantity']}}')">Add to Cart</button>
+                    {% endif %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No products found in this category.</p>
+    {% endif %}
+    <a href="{{ url_for('home_with_nav') }}">Back to Home</a>
+</body>
+</html>

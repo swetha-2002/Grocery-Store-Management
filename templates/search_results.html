@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <h1>Search Results</h1>
+    <ul>
+        {% for product in results %}
+        <li>
+            {% if product.category %}
+                Category: {{ product.category }} -
+            {% endif %}
+            Name: {{ product.name }} - Price: ${{ product.price }}
+            <!-- Add a form to allow the user to add the product to the cart -->
+            <form action="{{ url_for('add_to_cart') }}" method="post">
+                <input type="hidden" name="product_name" value="{{ product.name }}">
+                <label for="quantity">Quantity:</label>
+                <input type="number" name="quantity" id="quantity" value="1" min="1">
+                <input type="submit" value="Add to Cart">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
